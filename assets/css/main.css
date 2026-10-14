@@ -2630,6 +2630,10 @@ input, select, textarea {
 					margin-top: 0;
 				}
 
+
+	}
+
+
 		
 .project-link {
     display: block;
@@ -2659,6 +2663,3 @@ input, select, textarea {
         transition: none;
     }
 }
-
-
-	}
