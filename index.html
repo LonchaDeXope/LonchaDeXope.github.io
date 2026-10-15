@@ -16,27 +16,108 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const buttons = document.querySelectorAll('#portfolio .filter-btn');
+    const items = Array.from(
+        document.querySelectorAll('#portfolio .portfolio-item')
+    );
 
-    filterButtons.forEach(function (button) {
+    const grid = document.querySelector('#portfolio .portfolio-grid');
+    const exitDuration = 250;
+    let filterVersion = 0;
+
+    function getPositions() {
+        const positions = new Map();
+
+        items.forEach(function (item) {
+            if (!item.classList.contains('is-hidden')) {
+                positions.set(item, item.getBoundingClientRect());
+            }
+        });
+
+        return positions;
+    }
+
+    function animateReposition(previousPositions) {
+        items.forEach(function (item) {
+            if (item.classList.contains('is-hidden')) return;
+
+            const previous = previousPositions.get(item);
+            if (!previous) return;
+
+            const current = item.getBoundingClientRect();
+            const dx = previous.left - current.left;
+            const dy = previous.top - current.top;
+
+            if (Math.abs(dx) < 1 && Math.abs(dy) < 1) return;
+
+            item.classList.add('is-moving');
+            item.style.transition = 'none';
+            item.style.transform =
+                'translate(' + dx + 'px, ' + dy + 'px)';
+
+            item.getBoundingClientRect();
+
+            item.style.transition = '';
+            item.style.transform = '';
+
+            requestAnimationFrame(function () {
+                item.style.transform = '';
+            });
+
+            item.addEventListener('transitionend', function handler(event) {
+                if (event.propertyName !== 'transform') return;
+                item.classList.remove('is-moving');
+                item.removeEventListener('transitionend', handler);
+            });
+        });
+    }
+
+    buttons.forEach(function (button) {
         button.addEventListener('click', function () {
-            const selectedFilter = this.dataset.filter;
+            const version = ++filterVersion;
+            const filter = button.dataset.filter;
+            const previousPositions = getPositions();
 
-            // Update active button
-            filterButtons.forEach(function (btn) {
+            buttons.forEach(function (btn) {
                 btn.classList.toggle('active', btn === button);
             });
 
-            // Filter projects
-            portfolioItems.forEach(function (item) {
-                const category = item.dataset.category;
-                const shouldShow =
-                    selectedFilter === 'all' ||
-                    category === selectedFilter;
+            items.forEach(function (item) {
+                const matches =
+                    filter === 'all' ||
+                    item.dataset.category === filter;
 
-                item.classList.toggle('is-hidden', !shouldShow);
+                item.classList.remove('is-entering', 'is-leaving');
+
+                if (!matches && !item.classList.contains('is-hidden')) {
+                    item.classList.add('is-leaving');
+                } else if (
+                    matches &&
+                    item.classList.contains('is-hidden')
+                ) {
+                    item.classList.remove('is-hidden');
+                    item.classList.add('is-entering');
+
+                    requestAnimationFrame(function () {
+                        if (version !== filterVersion) return;
+                        item.classList.remove('is-entering');
+                    });
+                }
             });
+
+            window.setTimeout(function () {
+                if (version !== filterVersion) return;
+
+                items.forEach(function (item) {
+                    if (item.classList.contains('is-leaving')) {
+                        item.classList.remove('is-leaving');
+                        item.classList.add('is-hidden');
+                    }
+                });
+
+                // Reposition the remaining projects smoothly.
+                animateReposition(previousPositions);
+            }, exitDuration);
         });
     });
 });
