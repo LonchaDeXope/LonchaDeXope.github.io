@@ -2766,3 +2766,42 @@ input, select, textarea {
     }
 }
 
+/* Portfolio filters */
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75em;
+    margin: -1em 0 2em;
+}
+
+.portfolio-filters .filter-btn {
+    background: transparent;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    color: #666;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.85em;
+    padding: 0.6em 1.5em;
+    transition: background-color 0.2s ease,
+                color 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.portfolio-filters .filter-btn:hover {
+    border-color: #888;
+    color: #333;
+}
+
+.portfolio-filters .filter-btn.active {
+    background: #666;
+    border-color: #666;
+    color: #fff;
+}
+
+/* Hide filtered projects */
+.portfolio-item.is-hidden {
+    display: none !important;
+}
+
