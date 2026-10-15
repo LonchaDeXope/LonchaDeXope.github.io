@@ -2800,64 +2800,53 @@ input, select, textarea {
     color: #fff;
 }
 
-/* Independent portfolio layout */
+/* Portfolio masonry-style layout */
 #portfolio .portfolio-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 2em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5em;
     width: 100%;
+    align-items: start;
 }
 
+/* Project cards keep their natural image proportions */
 #portfolio .portfolio-grid > .portfolio-item {
-    box-sizing: border-box;
-    flex: 0 1 calc((100% - 4em) / 3);
-    width: calc((100% - 4em) / 3);
+    width: 100%;
     min-width: 0;
     margin: 0;
-    opacity: 1;
-    transform: translateY(0);
-    will-change: transform, opacity;
+    align-self: start;
 }
 
+#portfolio .portfolio-item > a.image {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+
+#portfolio .portfolio-item > a.image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Filtered projects */
 #portfolio .portfolio-item.is-hidden {
     display: none !important;
 }
 
-#portfolio .portfolio-item.is-leaving {
-    opacity: 0;
-    transform: translateY(12px) scale(0.98);
-    pointer-events: none;
-}
-
-#portfolio .portfolio-item.is-entering {
-    opacity: 0;
-    transform: translateY(12px) scale(0.98);
-}
-
-/* Animate repositioning */
-#portfolio .portfolio-item.is-moving {
-    transition: transform 0.35s ease, opacity 0.25s ease;
-}
-
 /* Tablet */
 @media screen and (max-width: 980px) {
-    #portfolio .portfolio-grid > .portfolio-item {
-        flex-basis: calc((100% - 2em) / 2);
-        width: calc((100% - 2em) / 2);
+    #portfolio .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 /* Mobile */
 @media screen and (max-width: 736px) {
     #portfolio .portfolio-grid {
+        grid-template-columns: minmax(0, 1fr);
         gap: 1.5em;
-    }
-
-    #portfolio .portfolio-grid > .portfolio-item {
-        flex-basis: 100%;
-        width: 100%;
     }
 }
 
