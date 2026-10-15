@@ -2776,10 +2776,10 @@ input, select, textarea {
 }
 
 .portfolio-filters .filter-btn {
-    background: transparent;
-    border: 2px solid #ccc;
+    background-color: #e8e8e8;
+    border: 2px solid #d0d0d0;
     border-radius: 4px;
-    color: #666;
+    color: #444;
     cursor: pointer;
     font: inherit;
     font-size: 0.85em;
@@ -2790,18 +2790,54 @@ input, select, textarea {
 }
 
 .portfolio-filters .filter-btn:hover {
-    border-color: #888;
-    color: #333;
+    background-color: #d8d8d8;
+    border-color: #aaa;
+    color: #222;
 }
 
 .portfolio-filters .filter-btn.active {
-    background: #666;
-    border-color: #666;
+    background-color: #555;
+    border-color: #555;
     color: #fff;
 }
 
-/* Hide filtered projects */
-.portfolio-item.is-hidden {
+/* Portfolio responsive grid */
+#portfolio .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2em;
+    align-items: start;
+}
+
+/* Override the template's row and column layout */
+#portfolio .portfolio-grid::before,
+#portfolio .portfolio-grid::after {
+    display: none;
+    content: none;
+}
+
+#portfolio .portfolio-grid > .portfolio-item {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+#portfolio .portfolio-item.is-hidden {
     display: none !important;
+}
+
+/* Tablet */
+@media screen and (max-width: 980px) {
+    #portfolio .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 736px) {
+    #portfolio .portfolio-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5em;
+    }
 }
 
