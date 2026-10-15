@@ -13,6 +13,36 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            const selectedFilter = this.dataset.filter;
+
+            // Update active button
+            filterButtons.forEach(function (btn) {
+                btn.classList.toggle('active', btn === button);
+            });
+
+            // Filter projects
+            portfolioItems.forEach(function (item) {
+                const category = item.dataset.category;
+                const shouldShow =
+                    selectedFilter === 'all' ||
+                    category === selectedFilter;
+
+                item.classList.toggle('is-hidden', !shouldShow);
+            });
+        });
+    });
+});
+</script>
+
+	
 	<body class="is-preload">
 
 		<!-- Header -->
