@@ -3168,50 +3168,68 @@ input, select, textarea {
     }
 }
 
-/* Fog-like transitions between sections */
-#main > section {
+#main .rust-transition {
     position: relative;
-    isolation: isolate;
+    z-index: 3;
+    width: 100%;
+    height: 100px;
+    margin: -1px 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: transparent;
 }
 
-/* Soft mist at the bottom of each section */
-#main > section:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    bottom: -1px;
-    left: 0;
+#main .rust-transition svg {
+    display: block;
     width: 100%;
-    height: 90px;
-    pointer-events: none;
-
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(18, 20, 24, 0.12) 25%,
-        rgba(18, 20, 24, 0.38) 60%,
-        rgba(18, 20, 24, 0.7) 100%
-    );
-
-    opacity: 0.8;
+    height: 100%;
+    overflow: visible;
 }
 
-/* Soft transition at the top of every section */
-#main > section + section::before {
-    content: "";
-    position: absolute;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    pointer-events: none;
+/* Slow movement in opposing directions */
+#main .rust-shape {
+    transform-box: fill-box;
+    transform-origin: center;
+}
 
-    background: linear-gradient(
-        to bottom,
-        rgba(18, 20, 24, 0.55) 0%,
-        rgba(18, 20, 24, 0.2) 45%,
-        transparent 100%
-    );
+#main .rust-shape-back {
+    animation: rust-drift-back 24s ease-in-out infinite alternate;
+}
+
+#main .rust-shape-front {
+    animation: rust-drift-front 31s ease-in-out infinite alternate;
+}
+
+/* Responsive transition height */
+@media screen and (max-width: 736px) {
+    #main .rust-transition {
+        height: 65px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    #main .rust-shape-back,
+    #main .rust-shape-front {
+        animation: none;
+    }
+}
+
+@keyframes rust-drift-back {
+    from {
+        transform: translateX(-1.2%) translateY(-2px);
+    }
+    to {
+        transform: translateX(1.2%) translateY(3px);
+    }
+}
+
+@keyframes rust-drift-front {
+    from {
+        transform: translateX(1%) translateY(2px);
+    }
+    to {
+        transform: translateX(-1%) translateY(-3px);
+    }
 }
 
