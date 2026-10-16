@@ -2799,12 +2799,6 @@ input, select, textarea {
     border-color: #555;
     color: #fff;
 }
-
-```css
-/* =========================================
-   PORTFOLIO GRID
-========================================= */
-
 #portfolio .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2922,8 +2916,6 @@ input, select, textarea {
         transition: none;
     }
 }
-```
-
 /* Resume layout */
 #resume .resume-columns {
     display: grid;
@@ -3241,4 +3233,42 @@ input, select, textarea {
         margin-top: 1.6em;
     }
 }
+/* Fix portfolio filter buttons */
+#portfolio .portfolio-filters {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    margin: 1.5em 0;
+}
 
+#portfolio .portfolio-filters .filter-btn {
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 75px;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0.65em 1.3em !important;
+
+    font-size: 0.85em !important;
+    line-height: 1.4 !important;
+    text-align: center;
+    white-space: nowrap;
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+}
+
+#portfolio .portfolio-filters .filter-btn:hover,
+#portfolio .portfolio-filters .filter-btn.active {
+    background: #8b4536;
+    border-color: #8b4536;
+    color: #fff;
+}
