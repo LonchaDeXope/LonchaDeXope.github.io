@@ -3016,3 +3016,133 @@ input, select, textarea {
         font-size: 1.4em;
     }
 }
+
+/* Main hero banner */
+#top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 520px;
+    padding: 5em 0;
+    background-image: url("../../images/banner.jpg");
+    background-size: cover;
+    background-position: center 45%;
+    text-align: left;
+    isolation: isolate;
+}
+
+/* Dark overlay over the collage */
+#top .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(10, 13, 20, 0.88) 0%,
+            rgba(10, 13, 20, 0.68) 55%,
+            rgba(10, 13, 20, 0.35) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(10, 13, 20, 0.45),
+            rgba(10, 13, 20, 0.1)
+        );
+}
+
+#top .hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+#top .hero-content header {
+    max-width: 850px;
+    margin-bottom: 2em;
+}
+
+#top .hero-eyebrow {
+    display: inline-block;
+    margin-bottom: 1.5em;
+    color: #c0cce0;
+    font-size: 0.75em;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+}
+
+#top .hero-name {
+    margin: 0 0 0.35em;
+    color: #fff;
+    font-size: clamp(2.5em, 5vw, 4.5em);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -0.035em;
+}
+
+#top .hero-name strong {
+    font-weight: 750;
+}
+
+#top .hero-role {
+    margin: 1.2em 0 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.05em;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+    line-height: 1.8;
+}
+
+#top .hero-divider {
+    margin: 0 0.5em;
+    color: #a9bddf;
+}
+
+#top .hero-accent {
+    display: block;
+    width: 54px;
+    height: 3px;
+    margin-top: 1.8em;
+    border-radius: 2px;
+    background: #a9bddf;
+}
+
+#top .hero-content footer {
+    margin-top: 2em;
+}
+
+#top .hero-content .button {
+    padding: 0.9em 1.8em;
+    background: #fff;
+    color: #202631 !important;
+    font-size: 0.8em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: background-color 0.2s ease;
+}
+
+#top .hero-content .button:hover {
+    background: #dce5f2;
+}
+
+/* Mobile */
+@media screen and (max-width: 736px) {
+    #top {
+        min-height: 430px;
+        padding: 4em 0;
+        background-position: center;
+        text-align: left;
+    }
+
+    #top .hero-name {
+        font-size: 2.5em;
+    }
+
+    #top .hero-role {
+        max-width: 330px;
+        font-size: 0.95em;
+    }
+
+    #top .hero-divider {
+        margin: 0 0.25em;
+    }
+}
