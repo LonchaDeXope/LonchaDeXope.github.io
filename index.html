@@ -199,66 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
 </section>		
 
-<!-- End of Intro -->
-</section>
-
-<!-- Corroded transition -->
-<div class="rust-transition" aria-hidden="true">
-    <svg viewBox="0 0 1440 140" preserveAspectRatio="none">
-        <defs>
-            <filter id="rust-texture" x="-10%" y="-30%" width="120%" height="160%">
-                <feTurbulence
-                    type="fractalNoise"
-                    baseFrequency="0.018 0.065"
-                    numOctaves="3"
-                    seed="17"
-                    result="noise"
-                />
-                <feDisplacementMap
-                    in="SourceGraphic"
-                    in2="noise"
-                    scale="27"
-                    xChannelSelector="R"
-                    yChannelSelector="G"
-                />
-            </filter>
-
-            <linearGradient id="rust-colors" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#242323" stop-opacity="0"/>
-                <stop offset="38%" stop-color="#292522" stop-opacity=".9"/>
-                <stop offset="58%" stop-color="#58372b" stop-opacity=".85"/>
-                <stop offset="72%" stop-color="#292522" stop-opacity=".95"/>
-                <stop offset="100%" stop-color="#242323" stop-opacity="0"/>
-            </linearGradient>
-        </defs>
-
-        <path
-            class="rust-shape rust-shape-back"
-            d="M0 58 L75 48 L125 67 L205 40 L280 61 L355 34 L430 55
-               L510 42 L585 67 L665 31 L740 52 L815 38 L900 62 L980 33
-               L1060 54 L1140 42 L1220 65 L1300 37 L1370 57 L1440 43
-               L1440 105 L1360 94 L1290 112 L1200 89 L1110 107 L1020 91
-               L930 116 L840 93 L750 110 L665 87 L570 108 L480 90
-               L390 113 L300 92 L210 109 L120 88 L0 105 Z"
-            fill="url(#rust-colors)"
-            filter="url(#rust-texture)"
-        />
-
-        <path
-            class="rust-shape rust-shape-front"
-            d="M0 73 L95 82 L165 62 L250 87 L325 68 L410 91 L500 70
-               L580 86 L670 62 L760 88 L850 67 L940 89 L1030 65 L1120 84
-               L1210 63 L1300 86 L1370 68 L1440 78
-               L1440 100 L1360 111 L1280 95 L1190 119 L1100 99
-               L1010 117 L920 99 L830 121 L740 102 L650 118 L560 99
-               L470 120 L380 102 L290 118 L200 98 L100 115 L0 100 Z"
-            fill="#171819"
-            opacity=".95"
-            filter="url(#rust-texture)"
-        />
-    </svg>
-</div>
-
 <!-- Portfolio -->
 <section id="portfolio" class="two">
 				
