@@ -3293,7 +3293,7 @@ input, select, textarea {
 #portfolio .project-details p {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 16px;
 
     margin: 0;
     color: rgba(255, 255, 255, 0.85);
