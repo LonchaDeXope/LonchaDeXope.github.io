@@ -2776,10 +2776,10 @@ input, select, textarea {
 }
 
 #portfolio .filter-btn {
-    background: #e8e8e8;
-    border: 2px solid #d0d0d0;
+    background: #292b30;
+    border: 2px solid #41434a;
     border-radius: 4px;
-    color: #444;
+    color: #c5c5c5;
     cursor: pointer;
     font: inherit;
     font-size: 0.85em;
@@ -2790,15 +2790,17 @@ input, select, textarea {
 }
 
 #portfolio .filter-btn:hover {
-    background: #d8d8d8;
-    border-color: #aaa;
+    background: #3b3030;
+    border-color: #805044;
+    color: #fff;
 }
 
 #portfolio .filter-btn.active {
-    background: #555;
-    border-color: #555;
+    background: #8b4536;
+    border-color: #8b4536;
     color: #fff;
 }
+
 #portfolio .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
