@@ -3017,12 +3017,47 @@ input, select, textarea {
     }
 }
 
-/* Centered hero content */
 #top {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 560px;
+    padding: 5em 0;
     text-align: center;
+    isolation: isolate;
+
+    background-image: url("../../images/banner.jpg");
+    background-size: cover;
+    background-position: center 45%;
 }
 
+/* Dark overlay and subtle vignette */
+#top .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(8, 12, 20, 0.78) 0%,
+            rgba(8, 12, 20, 0.68) 50%,
+            rgba(8, 12, 20, 0.78) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(8, 12, 20, 0.65) 0%,
+            rgba(8, 12, 20, 0.12) 65%,
+            rgba(8, 12, 20, 0.38) 100%
+        );
+}
+
+/* Content layout */
 #top .hero-content {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3032,25 +3067,103 @@ input, select, textarea {
 
 #top .hero-content header {
     width: 100%;
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
     text-align: center;
 }
 
+/* Small uppercase label */
 #top .hero-eyebrow {
-    display: block;
-    text-align: center;
+    display: inline-block;
+    margin-bottom: 1.8em;
+    color: #c4d2e8;
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
 }
 
+/* Main name */
 #top .hero-name {
-    text-align: center;
+    margin: 0;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: clamp(2.8em, 5.5vw, 4.8em);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -0.045em;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
 }
 
+#top .hero-name strong {
+    color: #ffffff;
+    font-weight: 750;
+}
+
+/* Professional role */
 #top .hero-role {
-    text-align: center;
+    margin: 1.5em 0 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.95em;
+    font-weight: 400;
+    line-height: 1.9;
+    letter-spacing: 0.055em;
 }
 
+#top .hero-divider {
+    display: inline-block;
+    margin: 0 0.7em;
+    color: #a9c3e8;
+    font-weight: 300;
+}
+
+/* Decorative accent */
 #top .hero-accent {
-    margin: 1.8em auto 0;
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin: 2em auto 0;
+    border-radius: 3px;
+    background: #a9c3e8;
 }
 
+/* Mobile adaptation */
+@media screen and (max-width: 736px) {
+    #top {
+        min-height: 460px;
+        padding: 4em 1em;
+        background-position: center;
+    }
+
+    #top .hero-content header {
+        max-width: 100%;
+    }
+
+    #top .hero-eyebrow {
+        margin-bottom: 1.5em;
+        font-size: 0.62em;
+        letter-spacing: 0.16em;
+    }
+
+    #top .hero-name {
+        font-size: clamp(2.3em, 9vw, 3.2em);
+        letter-spacing: -0.035em;
+        line-height: 1.16;
+    }
+
+    #top .hero-role {
+        max-width: 330px;
+        margin: 1.4em auto 0;
+        font-size: 0.85em;
+        line-height: 1.9;
+        letter-spacing: 0.025em;
+    }
+
+    #top .hero-divider {
+        margin: 0 0.35em;
+    }
+
+    #top .hero-accent {
+        margin-top: 1.6em;
+    }
+}
