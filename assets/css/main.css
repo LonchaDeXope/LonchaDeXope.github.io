@@ -2800,55 +2800,129 @@ input, select, textarea {
     color: #fff;
 }
 
-/* Portfolio masonry-style layout */
+```css
+/* =========================================
+   PORTFOLIO GRID
+========================================= */
+
 #portfolio .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5em;
-    width: 100%;
-    align-items: start;
+    gap: 24px;
+    align-items: stretch;
+    margin-top: 2em;
 }
 
-/* Project cards keep their natural image proportions */
-#portfolio .portfolio-grid > .portfolio-item {
-    width: 100%;
+#portfolio .portfolio-item {
+    display: block;
     min-width: 0;
     margin: 0;
-    align-self: start;
-}
-
-#portfolio .portfolio-item > a.image {
-    display: block;
-    width: 100%;
+    padding: 0;
     overflow: hidden;
+    border-radius: 6px;
+    background: #17191d;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-#portfolio .portfolio-item > a.image img {
+#portfolio .portfolio-item.is-hidden {
+    display: none;
+}
+
+/* Uniform image dimensions */
+#portfolio .project-link {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #17191d;
+}
+
+#portfolio .project-link img {
     display: block;
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    transition:
+        transform 0.45s ease,
+        filter 0.35s ease;
 }
 
-/* Filtered projects */
-#portfolio .portfolio-item.is-hidden {
-    display: none !important;
+/* Subtle hover effect */
+#portfolio .portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+#portfolio .portfolio-item:hover .project-link img {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+}
+
+/* Portfolio filters */
+#portfolio .portfolio-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 1.5em 0;
+}
+
+#portfolio .filter-btn {
+    padding: 0.65em 1.4em;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+#portfolio .filter-btn:hover,
+#portfolio .filter-btn.active {
+    background: #8b4536;
+    border-color: #8b4536;
+    color: #fff;
 }
 
 /* Tablet */
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1000px) {
     #portfolio .portfolio-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
     }
 }
 
 /* Mobile */
-@media screen and (max-width: 736px) {
+@media screen and (max-width: 600px) {
     #portfolio .portfolio-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 1.5em;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    #portfolio .project-link {
+        aspect-ratio: 16 / 10;
     }
 }
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    #portfolio .portfolio-item,
+    #portfolio .project-link img {
+        transition: none;
+    }
+}
+```
 
 /* Resume layout */
 #resume .resume-columns {
